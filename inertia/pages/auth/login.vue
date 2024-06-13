@@ -14,7 +14,7 @@ const form = reactive({
 
 function submit() {
   console.log(form)
-  router.post('/auth/register', form)
+  router.post('/auth/login', form)
 }
 
 </script>

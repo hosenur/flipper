@@ -4,10 +4,10 @@ import DashboardLayout from "~/layouts/DashboardLayout.vue";
 import { Head } from '@inertiajs/vue3'
 </script>
 <template>
-<Head title="Dashboard" />
+  <Head title="Dashboard" />
   <DashboardLayout>
 
-<h1>Hello World</h1>
+    <h1>Projects</h1>
   </DashboardLayout>
 </template>
 
