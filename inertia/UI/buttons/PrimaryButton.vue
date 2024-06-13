@@ -3,16 +3,14 @@ import { defineProps } from 'vue';
 const props = defineProps({
   loading: {
     type: Boolean,
-    required: true,
   },
 });
 </script>
 
 <template>
   <button
-    onclick="console.log('clicked')"
     :disabled="props.loading"
-    class="bg-black text-white font-bold flex items-center justify-center w-full py-2 rounded cursor-pointer">
+    class="bg-gradient-to-b from-pigment-indigo-700 to-pigment-indigo-800 transition-all ease-in-out text-white font-semibold  flex items-center justify-center px-4 py-2 rounded-lg cursor-pointer">
     <template v-if="props.loading">
       Loading...
     </template>

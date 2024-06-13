@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import Card from "~/UI/card/Card.vue";
 import CardHeader from "~/UI/card/CardHeader.vue";
-import Button from "~/UI/Button.vue";
 import Input from "~/UI/Input.vue";
 import InputGroup from "~/UI/input/InputGroup.vue";
 import { reactive } from "vue";
 import { router } from '@inertiajs/vue3'
+import PrimaryButton from "~/UI/buttons/PrimaryButton.vue";
 
 const form = reactive({
   email: "",
@@ -46,9 +46,9 @@ function submit() {
             type="password" />
         </InputGroup>
 
-        <Button
+        <PrimaryButton
           :onclick="submit"
-          :loading="false">Submit</Button>
+          :loading="false">Submit</PrimaryButton>
       </Card>
     </div>
     <div class="bg-black h-screen w-1/2 hidden md:flex">hi</div>

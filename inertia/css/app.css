@@ -3,3 +3,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+  *{
+
+
+    @apply font-urbanist font-medium;
+  }
+
+}

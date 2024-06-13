@@ -1,11 +1,10 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-
+  <div class="flex gap-4 mt-2">
+    <slot />
+  </div>
 </template>
-
-<style scoped>
-
-</style>
+<script>
+export default {
+  name: 'DialogFooter',
+};
+</script>

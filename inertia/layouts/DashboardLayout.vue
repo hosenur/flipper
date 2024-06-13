@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div >
     <TransitionRoot as="template" :show="sidebarOpen">
       <Dialog as="div" class="fixed inset-0 flex z-40 md:hidden" @close="sidebarOpen = false">
         <TransitionChild as="template" enter="transition-opacity ease-linear duration-300" enter-from="opacity-0"
@@ -75,7 +75,7 @@
           </div>
           <nav class="mt-5 flex-1 px-2 bg-white space-y-1">
             <Link v-for="item in navigation" :key="item.name" :href="item.href"
-               :class="['text-gray-600 hover:bg-gray-50 hover:text-gray-900', 'group flex items-center px-2 py-2 text-sm font-medium rounded-md']">
+               :class="['text-gray-600 hover:bg-pigment-indigo-50  hover:text-gray-900', 'group flex items-center px-2 py-2 text-sm font-medium rounded-md']">
               <component :is="item.icon"
                          :class="['text-gray-400 group-hover:text-gray-500', 'mr-3 flex-shrink-0 h-5 w-5']"
                          aria-hidden="true" />
