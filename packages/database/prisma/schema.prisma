@@ -23,6 +23,7 @@ model User {
   username String    @unique
   password String
   sessions Session[]
+  Project  Project[]
 }
 
 model Session {
@@ -33,7 +34,17 @@ model Session {
   user User @relation(references: [id], fields: [userId], onDelete: Cascade)
 }
 
+model Project {
+  id          String   @id
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  userId      String
+  user        User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+}
+
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
 }
