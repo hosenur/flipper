@@ -1,6 +1,7 @@
 import "@repo/ui/globals.css";
 import type { Metadata } from "next";
 import { GeistMono } from "geist/font/mono"
+import { cn } from "@repo/ui/lib/utils";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={GeistMono.className}>{children}</body>
+      <body className={cn(GeistMono.className)}>{children}</body>
     </html>
   );
 }

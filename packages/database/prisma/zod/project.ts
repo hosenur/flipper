@@ -4,7 +4,7 @@ import { CompleteUser, relatedUserSchema } from "./index"
 export const projectSchema = z.object({
   id: z.string(),
   name: z.string(),
-  description: z.string().nullish(),
+  description: z.string(),
   createdAt: z.date(),
   updatedAt: z.date(),
   userId: z.string(),
