@@ -2,7 +2,7 @@
   "name": "@repo/auth",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
     "clean": "bun run rm -rf dist *.tsbuildinfo",
     "dev": "tsc -w -p tsconfig.build.json",

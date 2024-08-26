@@ -1,6 +1,6 @@
 'use server'
 
-import { prisma } from '@/lib/database'
+import { prisma } from '@repo/database'
 import { insertProjectParams, insertProjectSchema } from '@/lib/database/schema/project'
 import { actionClient } from '@/lib/safe-action'
 

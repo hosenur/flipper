@@ -4,7 +4,7 @@ import * as argon2 from "argon2";
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation";
 
-import { prisma } from '@/lib/database';
+import { prisma } from '@repo/database';
 import { insertUserSchema } from '@/lib/database/schema/user';
 import { actionClient } from '../lib/safe-action';
 
