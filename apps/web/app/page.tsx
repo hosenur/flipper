@@ -1,7 +1,11 @@
+import { prisma } from '@repo/database'
+import React from 'react'
+
 export default async function Home() {
+  const users = await prisma.user.findMany()
   return (
-    <div className="max-w-4xl mx-auto py-6">
-      <h1 className="text-4xl font-medium">flipper</h1>
+    <div>
+      {JSON.stringify(users)}
     </div>
   )
 }
