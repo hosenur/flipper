@@ -33,7 +33,7 @@ importers:
         specifier: ^18
         version: 18.3.1(react@18.2.0)
     devDependencies:
-      '@repo/eslint':
+      '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint
       '@repo/tsconfig':
@@ -109,7 +109,7 @@ importers:
         specifier: ^3.23.8
         version: 3.23.8
     devDependencies:
-      '@repo/eslint':
+      '@repo/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint
       '@repo/tsconfig':
@@ -243,7 +243,7 @@ importers:
         specifier: ^3.23.8
         version: 3.23.8
     devDependencies:
-      '@repo/eslint':
+      '@repo/eslint-config':
         specifier: workspace:*
         version: link:../eslint
       '@repo/tsconfig':

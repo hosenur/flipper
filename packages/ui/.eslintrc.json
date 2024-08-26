@@ -1,6 +1,6 @@
 {
     "root": true,
-    "extends": ["@repo/eslint/react-internal.js"],
+    "extends": ["@repo/eslint-config/react-internal"],
     "parser": "@typescript-eslint/parser",
     "rules": {
       "no-redeclare": "off"
