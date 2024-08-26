@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { PrismaClient } from "@prisma/client";
-console.log(process.env.DATABASE_URL)
+console.log(process.env)
 const prisma = new PrismaClient({
     datasources: {
         db: {
