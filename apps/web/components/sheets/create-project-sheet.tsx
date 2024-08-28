@@ -22,14 +22,13 @@ export default function CreateProjectSheet() {
   })
 
   const onSubmit = (data: z.infer<typeof insertProjectParams>) => {
-    // createProject({ name: data.name, description: data.description })
-    testAction()
+    createProject({ name: data.name, description: data.description })
   }
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <Button>Create Project</Button>
+        <Button>CREATE PROJECT</Button>
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>

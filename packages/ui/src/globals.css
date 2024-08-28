@@ -34,10 +34,10 @@
 
 @layer base {
     * {
-        @apply border-border;
+        @apply border-border uppercase;
     }
 
     body {
-        @apply bg-background text-foreground;
+        @apply bg-background text-foreground uppercase font-light;
     }
 }

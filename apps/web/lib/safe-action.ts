@@ -6,5 +6,9 @@ export const authActionClient = actionClient.use(async ({ next }) => {
     if (!session) {
         throw new Error('Unauthorized')
     }
-    return next()
+    return next({
+        ctx: {
+            session
+        }
+    })
 })
