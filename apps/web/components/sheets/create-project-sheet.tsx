@@ -1,5 +1,6 @@
 'use client'
 import { createProject } from '@/actions/create-project-action'
+import { testAction } from '@/actions/test-action'
 import { insertProjectParams } from '@/lib/database/schema/project'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@repo/ui/components/ui/button'
@@ -21,7 +22,8 @@ export default function CreateProjectSheet() {
   })
 
   const onSubmit = (data: z.infer<typeof insertProjectParams>) => {
-    createProject({ name: data.name, description: data.description })
+    // createProject({ name: data.name, description: data.description })
+    testAction()
   }
 
   return (

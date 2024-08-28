@@ -3,12 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "scripts": {
-    "clean": "bun run rm -rf dist *.tsbuildinfo",
-    "dev": "tsc -w -p tsconfig.build.json",
-    "lint": "eslint .  --max-warnings 0",
-    "typecheck": "tsc"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
