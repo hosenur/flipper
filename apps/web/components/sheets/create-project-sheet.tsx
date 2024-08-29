@@ -1,6 +1,5 @@
 'use client'
 import { createProject } from '@/actions/create-project-action'
-import { testAction } from '@/actions/test-action'
 import { insertProjectParams } from '@/lib/database/schema/project'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@repo/ui/components/ui/button'
@@ -9,7 +8,9 @@ import { Input } from '@repo/ui/components/ui/input'
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@repo/ui/components/ui/sheet'
 import { useState } from 'react'
 import { useForm } from "react-hook-form"
+import { toast } from "sonner"
 import { z } from "zod"
+
 
 export default function CreateProjectSheet() {
   const [open, setOpen] = useState<boolean>(false)
@@ -21,8 +22,12 @@ export default function CreateProjectSheet() {
     },
   })
 
-  const onSubmit = (data: z.infer<typeof insertProjectParams>) => {
-    createProject({ name: data.name, description: data.description })
+  const onSubmit = async (data: z.infer<typeof insertProjectParams>) => {
+    const res = await createProject({ name: data.name, description: data.description })
+    if (res?.data?.success) {
+      setOpen(false)
+      toast.success('Project created successfully')
+    }
   }
 
   return (

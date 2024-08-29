@@ -14,5 +14,5 @@ export const createProject = authActionClient
             data: newProject,
         })
         revalidatePath('/projects')
-        return { project: project }
+        return { success: true, data: project }
     })
