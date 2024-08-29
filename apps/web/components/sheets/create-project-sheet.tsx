@@ -1,5 +1,5 @@
 'use client'
-import { createProject } from '@/actions/create-project-action'
+import { createProjectAction } from '@/actions/create-project-action'
 import { insertProjectParams } from '@/lib/database/schema/project'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@repo/ui/components/ui/button'
@@ -23,7 +23,7 @@ export default function CreateProjectSheet() {
   })
 
   const onSubmit = async (data: z.infer<typeof insertProjectParams>) => {
-    const res = await createProject({ name: data.name, description: data.description })
+    const res = await createProjectAction({ name: data.name, description: data.description })
     if (res?.data?.success) {
       setOpen(false)
       toast.success('Project created successfully')

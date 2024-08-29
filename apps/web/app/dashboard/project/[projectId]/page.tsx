@@ -9,6 +9,7 @@ import {
   TableRow,
 } from "@repo/ui/components/ui/table"
 import { prisma } from '@repo/database'
+import CreateFlagSheet from '@/components/sheets/create-flag-sheet'
 export default async function ProjectPage({ params }: { params: { projectId: string } }) {
   const flags = await prisma.flag.findMany({
     where: {
@@ -17,6 +18,7 @@ export default async function ProjectPage({ params }: { params: { projectId: str
   })
   return (
     <div>
+      <CreateFlagSheet projectId={params.projectId} />
       <Table>
         <TableCaption>A list of your recent invoices.</TableCaption>
         <TableHeader>
