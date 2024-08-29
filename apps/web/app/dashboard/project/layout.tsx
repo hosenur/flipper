@@ -38,7 +38,7 @@ import {
     TooltipTrigger,
 } from "@repo/ui/components/ui/tooltip"
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+export default function ProjectLayout({ children }: { children: React.ReactNode }) {
     return (
         <TooltipProvider>
 

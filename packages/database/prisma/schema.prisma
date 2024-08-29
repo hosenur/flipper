@@ -42,6 +42,19 @@ model Project {
   updatedAt   DateTime @updatedAt
   userId      String
   user        User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+  Flag        Flag[]
+}
+
+model Flag {
+  id          String   @id @default(uuid())
+  projectId   String
+  project     Project  @relation(references: [id], fields: [projectId], onDelete: Cascade)
+  name        String
+  description String
+  invocation  Int
+  value       Boolean
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 datasource db {
