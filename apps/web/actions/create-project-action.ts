@@ -3,6 +3,7 @@
 import { insertProjectParams, insertProjectSchema } from '@/lib/database/schema/project'
 import { authActionClient } from '@/lib/safe-action'
 import { prisma } from '@repo/database'
+import { revalidatePath } from 'next/cache'
 
 export const createProject = authActionClient
     .schema(insertProjectParams)
@@ -12,5 +13,6 @@ export const createProject = authActionClient
         const project = await prisma.project.create({
             data: newProject,
         })
+        revalidatePath('/projects')
         return { project: project }
     })
