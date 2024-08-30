@@ -8,7 +8,6 @@ import { revalidatePath } from 'next/cache'
 export const createProjectAction = authActionClient
     .schema(insertProjectParams)
     .action(async ({ parsedInput: { name, description }, ctx }) => {
-        console.log("here is the context", ctx)
         const newProject = insertProjectSchema.parse({ name, description, userId: ctx.session.user.id })
         const project = await prisma.project.create({
             data: newProject,

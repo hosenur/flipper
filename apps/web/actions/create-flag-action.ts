@@ -7,7 +7,7 @@ import { revalidatePath } from 'next/cache'
 
 export const createFlagAction = authActionClient
     .schema(insertFlagParams)
-    .action(async ({ parsedInput: { name, description, value, projectId }, ctx }) => {
+    .action(async ({ parsedInput: { name, description, value, projectId } }) => {
         const newFlag = insertFlagSchema.parse({ name, description, value, projectId })
         const flag = await prisma.flag.create({
             data: newFlag,
