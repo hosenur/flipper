@@ -1,17 +1,17 @@
 'use server'
 
-import { insertProjectParams, insertProjectSchema } from '@/lib/database/schema/project'
+import { insertFlagParams, insertFlagSchema } from '@/lib/database/schema/flag'
 import { authActionClient } from '@/lib/safe-action'
 import { prisma } from '@repo/database'
 import { revalidatePath } from 'next/cache'
 
 export const createFlagAction = authActionClient
-    .schema(insertProjectParams)
-    .action(async ({ parsedInput: { name, description }, ctx }) => {
-        const newProject = insertProjectSchema.parse({ name, description, userId: ctx.session.user.id })
-        const project = await prisma.project.create({
-            data: newProject,
+    .schema(insertFlagParams)
+    .action(async ({ parsedInput: { name, description, value, projectId }, ctx }) => {
+        const newFlag = insertFlagSchema.parse({ name, description, value, projectId })
+        const flag = await prisma.flag.create({
+            data: newFlag,
         })
-        revalidatePath('/projects')
-        return { success: true, data: project }
+        revalidatePath(`/dashboard/project/${flag.projectId}`)
+        return { success: true, data: flag }
     })

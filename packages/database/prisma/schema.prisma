@@ -51,7 +51,7 @@ model Flag {
   project     Project  @relation(references: [id], fields: [projectId], onDelete: Cascade)
   name        String
   description String
-  invocation  Int
+  invocation  Int      @default(0)
   value       Boolean
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

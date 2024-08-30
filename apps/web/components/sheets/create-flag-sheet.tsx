@@ -3,9 +3,10 @@ import { createFlagAction } from '@/actions/create-flag-action'
 import { insertFlagParams } from '@/lib/database/schema/flag'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@repo/ui/components/ui/button'
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@repo/ui/components/ui/form'
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@repo/ui/components/ui/form'
 import { Input } from '@repo/ui/components/ui/input'
 import { Sheet, SheetContent, SheetDescription, SheetFooter, SheetHeader, SheetTitle, SheetTrigger } from '@repo/ui/components/ui/sheet'
+import { Switch } from "@repo/ui/components/ui/switch"
 import { useState } from 'react'
 import { useForm } from "react-hook-form"
 import { toast } from "sonner"
@@ -27,11 +28,13 @@ export default function CreateFlagSheet({ projectId }: { projectId: string }) {
     const onSubmit = async (data: z.infer<typeof insertFlagParams>) => {
         const res = await createFlagAction({
             name: data.name.replaceAll(' ', '-'),
-            description: data.description
+            description: data.description,
+            value: data.value,
+            projectId: projectId,
         })
         if (res?.data?.success) {
             setOpen(false)
-            toast.success('Project created successfully')
+            toast.success('Flag created successfully')
         }
     }
 
@@ -75,9 +78,28 @@ export default function CreateFlagSheet({ projectId }: { projectId: string }) {
                                 </FormItem>
                             )}
                         />
+                        <FormField
+                            control={form.control}
+                            name="value"
+                            render={({ field }) => (
+                                <FormItem className="flex flex-row items-end justify-between rounded-lg border p-3 shadow-sm">
+                                    <div className="space-y-0.5">
+                                        <FormLabel>ENABLE FLAG</FormLabel>
+                                        <FormDescription>
+                                            SET THE FLAG VALUE FOR ALL USERS
+                                        </FormDescription>
+                                    </div>
+                                    <FormControl>
+                                        <Switch
+                                            checked={field.value}
+                                            onCheckedChange={field.onChange}
+                                        />
+                                    </FormControl>
+                                </FormItem>
+                            )}
+                        />
                         <SheetFooter>
-                            <Button type="submit">Create Project</Button>
-
+                            <Button type="submit">Create FLAG</Button>
                         </SheetFooter>
                     </form>
                 </Form>
