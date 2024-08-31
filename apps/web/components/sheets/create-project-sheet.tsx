@@ -43,13 +43,13 @@ export default function CreateProjectSheet() {
           </SheetDescription>
         </SheetHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 mt-4">
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel>Project Name</FormLabel>
                   <FormControl>
                     <Input placeholder="Enter Project Name" {...field} />
                   </FormControl>

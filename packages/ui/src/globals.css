@@ -34,7 +34,7 @@
 
 @layer base {
     * {
-        @apply border-border uppercase text-sm;
+        @apply border-border uppercase;
     }
 
     body {
