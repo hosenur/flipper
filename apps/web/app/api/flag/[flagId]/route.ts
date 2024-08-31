@@ -2,6 +2,7 @@ import { getUserAuth } from "@repo/auth";
 import { prisma } from "@repo/database";
 
 export async function GET(req: Request, { params }: { params: { flagId: string } }) {
+    console.log(req)
     const { session } = await getUserAuth();
     if (!session) {
         throw new Error('Unauthorized')
@@ -15,6 +16,7 @@ export async function GET(req: Request, { params }: { params: { flagId: string }
 }
 
 export async function POST(req: Request, { params }: { params: { flagId: string } }) {
+    console.log(req)
     const flag = await prisma.flag.update({
         where: {
             id: params.flagId,
