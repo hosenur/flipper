@@ -1,6 +1,6 @@
 'use server';
 import { lucia } from "@repo/auth";
-import * as argon2 from "argon2";
+import { verify } from "@node-rs/argon2";
 import { cookies } from "next/headers";
 
 import { insertUserSchema } from '@/lib/database/schema/user';
@@ -21,7 +21,7 @@ export const loginAction = actionClient
             }
         }
 
-        const isPasswordValid = await argon2.verify(user.password, password);
+        const isPasswordValid = await verify(user.password, password);
 
         if (!isPasswordValid) {
             return {

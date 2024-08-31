@@ -1,6 +1,6 @@
 'use server';
 import { lucia } from "@repo/auth";
-import * as argon2 from "argon2";
+import { hash } from "@node-rs/argon2";
 import { generateId } from "lucia";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -22,7 +22,7 @@ export const registerAction = actionClient
 
 
 
-        const hashedPassword = await argon2.hash(password);
+        const hashedPassword = await hash(password);
         const userID = generateId(15);
 
         try {
