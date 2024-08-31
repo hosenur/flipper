@@ -1,11 +1,10 @@
 'use server';
 import { lucia } from "@repo/auth";
 import * as argon2 from "argon2";
-import { cookies } from "next/headers"
-import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 
-import { prisma } from '@repo/database';
 import { insertUserSchema } from '@/lib/database/schema/user';
+import { prisma } from '@repo/database';
 import { actionClient } from '../lib/safe-action';
 
 export const loginAction = actionClient

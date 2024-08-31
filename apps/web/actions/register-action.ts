@@ -2,11 +2,11 @@
 import { lucia } from "@repo/auth";
 import * as argon2 from "argon2";
 import { generateId } from "lucia";
-import { cookies } from "next/headers"
+import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { prisma } from '@repo/database';
 import { insertUserSchema } from '@/lib/database/schema/user';
+import { prisma } from '@repo/database';
 import { actionClient } from '../lib/safe-action';
 
 export const registerAction = actionClient
