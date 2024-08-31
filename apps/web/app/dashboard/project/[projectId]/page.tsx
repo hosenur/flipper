@@ -13,7 +13,7 @@ export default async function ProjectPage({ params }: { params: { projectId: str
   return (
     <div>
       <CreateFlagSheet projectId={params.projectId} />
-      <div className='mt-4 flex w-full gap-4'>
+      <div className='mt-4 flex flex-col-reverse md:flex-row w-full gap-4'>
         <DataTable columns={columns} data={flags} />
         <ProjectInfo />
       </div>
