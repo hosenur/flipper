@@ -3,6 +3,7 @@ import { prisma } from '@repo/database'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@repo/ui/components/ui/card'
 import { FlagIcon } from 'lucide-react'
 import Link from 'next/link'
+export const revalidate = 0
 
 export default async function ProjectsPage() {
     const projects = await prisma.project.findMany()

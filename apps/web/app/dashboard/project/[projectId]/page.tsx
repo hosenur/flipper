@@ -3,7 +3,7 @@ import { prisma } from '@repo/database'
 import { DataTable } from "./data-table"
 import { columns } from './columns'
 import ProjectInfo from '@/components/project/project-info'
-
+export const revalidate = 0
 export default async function ProjectPage({ params }: { params: { projectId: string } }) {
   const flags = await prisma.flag.findMany({
     where: {
