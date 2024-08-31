@@ -36,14 +36,30 @@ export default function ProjectInfo() {
     return (
         <Card className="max-w-full md:max-w-sm w-full bg-transparent rounded-none ">
             <CardHeader className="space-y-0 pb-0">
-                <CardDescription>Total Invocations</CardDescription>
-                <CardTitle className="flex items-baseline gap-1 text-4xl tabular-nums">
-                    <MotionNumber
-                        value={data?.invocation}
-                        format={{ notation: 'compact' }} // Intl.NumberFormat() options
-                        locales="en-US" // Intl.NumberFormat() locales
-                    />
-                </CardTitle>
+                <div className='flex justify-between'>
+                    <div className=''>
+                        <div className='flex items-center gap-2'>
+                            {
+                                data.value &&
+
+                        <span className='w-1 h-1 aspect-square bg-lime-500 animate-ping rounded-full'/>
+                            }
+                        <h1>{data?.name}</h1>
+                        </div>
+                    </div>
+                    <div>
+
+
+                        <CardDescription >Total Invocations</CardDescription>
+                        <CardTitle className="flex items-end gap-1 text-4xl tabular-nums ml-auto">
+                            <MotionNumber
+                                value={data?.invocation}
+                                format={{ notation: 'compact' }} // Intl.NumberFormat() options
+                                locales="en-US" // Intl.NumberFormat() locales
+                            />
+                        </CardTitle>
+                    </div>
+                </div>
             </CardHeader>
             <CardContent className="p-0">
                 <ChartContainer
