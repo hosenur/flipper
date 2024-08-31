@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(GeistMono.className)}>
-        <NextTopLoader />
+        <NextTopLoader height={1} color="#f0f0f0" />
 
         <main>
           {children}
