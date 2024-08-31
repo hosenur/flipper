@@ -1,6 +1,7 @@
 'use client'
 import { useQueryState } from 'nuqs';
 import useSWR from 'swr';
+import { Skeleton } from "@repo/ui/components/ui/skeleton"
 
 import { Area, AreaChart, XAxis, YAxis } from "recharts"
 
@@ -30,10 +31,10 @@ export default function ProjectInfo() {
         }
     );
     if (!data) {
-        return <div>Loading...</div>
+        return <SkeletonCard />
     }
     return (
-        <Card className="max-w-xs w-full bg-transparent rounded-none">
+        <Card className="max-w-xs w-full bg-transparent rounded-none h-[270px]">
             <CardHeader className="space-y-0 pb-0">
                 <CardDescription>Total Invocations</CardDescription>
                 <CardTitle className="flex items-baseline gap-1 text-4xl tabular-nums">
@@ -104,7 +105,7 @@ export default function ProjectInfo() {
                                 <stop
                                     offset="95%"
                                     stopColor="var(--color-time)"
-                                    stopOpacity={0.1}
+                                    stopOpacity={0.0}
                                 />
                             </linearGradient>
                         </defs>
@@ -138,3 +139,11 @@ export default function ProjectInfo() {
 
 }
 
+
+function SkeletonCard() {
+    return (
+        <div className="max-w-xs w-full">
+            <Skeleton className="h-[270px] w-full" />
+        </div>
+    )
+}

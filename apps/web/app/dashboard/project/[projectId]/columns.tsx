@@ -19,12 +19,11 @@ export const columns: ColumnDef<z.infer<typeof baseFlagSchema>>[] = [
         header: "Description",
     },
     {
-        accessorKey: "status",
+        accessorKey: "value",
         header: "Status",
-    },
-    {
-        accessorKey: "invocation",
-        header: "Invocations",
+        cell: ({ row }) => {
+            return row.getValue("value") ? "Active" : "Inactive"
+        },
     },
     {
         id: "view",
