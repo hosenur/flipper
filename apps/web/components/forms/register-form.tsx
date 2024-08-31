@@ -1,15 +1,18 @@
 'use client'
-import { register } from '@/actions/register-action'
+import { registerAction } from '@/actions/register-action'
 import { insertUserSchema } from '@/lib/database/schema/user'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@repo/ui/components/ui/button'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@repo/ui/components/ui/form'
 import { Input } from '@repo/ui/components/ui/input'
+import { LoaderIcon } from 'lucide-react'
+import { useState } from 'react'
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
 
 export default function RegisterForm() {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const form = useForm<z.infer<typeof insertUserSchema>>({
     resolver: zodResolver(insertUserSchema),
     defaultValues: {
@@ -18,8 +21,10 @@ export default function RegisterForm() {
     },
   })
 
-  const onSubmit = (data: z.infer<typeof insertUserSchema>) => {
-    register({ username: data.username, password: data.password })
+  const onSubmit = async (data: z.infer<typeof insertUserSchema>) => {
+    setIsLoading(true)
+    await registerAction({ username: data.username, password: data.password })
+    setIsLoading(false)
   }
   return (
     <Form {...form}>
@@ -56,7 +61,10 @@ export default function RegisterForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className='w-full'>
+          {isLoading && <LoaderIcon className="mr-2 h-4 w-4 animate-spin" />}
+          Submit
+        </Button>
       </form>
     </Form>
   )

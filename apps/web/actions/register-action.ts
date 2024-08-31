@@ -9,7 +9,7 @@ import { prisma } from '@repo/database';
 import { insertUserSchema } from '@/lib/database/schema/user';
 import { actionClient } from '../lib/safe-action';
 
-export const register = actionClient
+export const registerAction = actionClient
     .schema(insertUserSchema)
     .action(async ({ parsedInput: { username, password } }) => {
         // Check if username already exists

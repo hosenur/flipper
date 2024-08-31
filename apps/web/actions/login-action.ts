@@ -8,7 +8,7 @@ import { prisma } from '@repo/database';
 import { insertUserSchema } from '@/lib/database/schema/user';
 import { actionClient } from '../lib/safe-action';
 
-export const login = actionClient
+export const loginAction = actionClient
     .schema(insertUserSchema)
     .action(async ({ parsedInput: { username, password } }) => {
         const user = await prisma.user.findUnique({
@@ -16,13 +16,19 @@ export const login = actionClient
         });
 
         if (!user) {
-            throw new Error("Invalid username or password");
+            return {
+                success: false,
+                message: "Invalid username or password"
+            }
         }
 
         const isPasswordValid = await argon2.verify(user.password, password);
 
         if (!isPasswordValid) {
-            throw new Error("Invalid username or password");
+            return {
+                success: false,
+                message: "Invalid username or password"
+            }
         }
 
         const session = await lucia.createSession(user.id, {});
@@ -32,6 +38,8 @@ export const login = actionClient
             sessionCookie.value,
             sessionCookie.attributes
         );
-
-        redirect('/dashboard');
+        return {
+            success: true,
+            message: "Login successful"
+        }
     });
